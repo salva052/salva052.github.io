@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte de Resultados · Delicatessen · Sinergia MKT Studio</title>
+<style>
+  :root{
+    --dark:#022b3a;
+    --dark2:#033649;
+    --cyan:#47bfd7;
+    --cyan-soft:#e8f7fa;
+    --magenta:#fc2bb6;
+    --magenta-soft:#ffe9f7;
+    --ink:#1c2b31;
+    --muted:#5c6b71;
+    --line:#e3e9eb;
+    --bg:#f4f7f8;
+    --white:#ffffff;
+    --green:#1fa971;
+    --green-soft:#e6f7ef;
+    --amber:#c47d1a;
+    --amber-soft:#fff4e6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .page{max-width:960px;margin:0 auto;background:var(--white);}
+
+  /* HERO */
+  .hero{background:var(--dark);color:var(--white);padding:52px 56px 46px;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;top:-90px;right:-90px;width:300px;height:300px;border:32px solid var(--magenta);border-radius:50%;opacity:.9;}
+  .hero::before{content:"";position:absolute;bottom:-120px;left:-60px;width:240px;height:240px;background:var(--cyan);transform:rotate(28deg);opacity:.13;}
+  .brand-logo{height:50px;width:auto;margin-bottom:30px;position:relative;z-index:2;display:block;}
+  .kicker{display:inline-block;width:56px;height:5px;background:var(--magenta);margin-bottom:20px;position:relative;z-index:2;}
+  .hero h1{font-size:36px;font-weight:800;line-height:1.12;position:relative;z-index:2;}
+  .hero h1 span{color:var(--cyan);display:block;}
+  .hero .sub{margin-top:16px;font-size:15.5px;color:#c9d8dd;max-width:580px;position:relative;z-index:2;}
+  .hero .meta-row{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2;}
+  .hero .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:8px 16px;border-radius:30px;font-size:13px;}
+  .hero .chip b{color:var(--cyan);}
+
+  section{padding:42px 56px;}
+  .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:6px;}
+  .sec-num{background:var(--magenta);color:#fff;font-weight:800;width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+  .sec-title{font-size:22px;font-weight:800;color:var(--dark2);}
+  .sec-sub{font-size:14px;color:var(--muted);margin:2px 0 24px 58px;}
+
+  .intro{background:var(--cyan-soft);border-left:5px solid var(--cyan);padding:22px 26px;border-radius:0 10px 10px 0;}
+  .intro p{color:#274550;font-size:15px;}
+  .intro p+p{margin-top:10px;}
+
+  /* KPI top cards */
+  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:8px;}
+  .kpi-card{border:1px solid var(--line);border-radius:14px;padding:22px;background:#fff;text-align:center;}
+  .kpi-card .big{font-size:34px;font-weight:800;color:var(--dark2);line-height:1;}
+  .kpi-card .lbl{font-size:13px;color:var(--muted);margin-top:8px;}
+  .kpi-card.accent{background:var(--dark2);}
+  .kpi-card.accent .big{color:#fff;}
+  .kpi-card.accent .lbl{color:var(--cyan);}
+
+  /* conjunto cards */
+  .conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .conj{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(3,54,73,.04);}
+  .conj-top{padding:18px 22px;color:#fff;display:flex;align-items:center;gap:10px;}
+  .conj-top.tablas{background:var(--dark2);}
+  .conj-top.eventos{background:var(--magenta);}
+  .conj-top .ic{font-size:22px;}
+  .conj-top h4{font-size:16px;font-weight:800;}
+  .conj-body{padding:20px 22px;}
+  .metric-line{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;}
+  .metric-line:last-child{border-bottom:none;}
+  .metric-line .k{color:var(--muted);}
+  .metric-line .v{font-weight:700;color:var(--dark2);}
+
+  /* highlight callout */
+  .callout{border-radius:14px;padding:22px 26px;margin-top:6px;}
+  .callout.green{background:var(--green-soft);border-left:5px solid var(--green);}
+  .callout.amber{background:var(--amber-soft);border-left:5px solid var(--amber);}
+  .callout h4{font-size:16px;margin-bottom:8px;}
+  .callout.green h4{color:var(--green);}
+  .callout.amber h4{color:var(--amber);}
+  .callout p{font-size:14.5px;color:#37474d;}
+  .callout p+p{margin-top:8px;}
+
+  /* trend explanation */
+  .trend-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .trend-box h4{font-size:15px;color:var(--dark2);margin-bottom:10px;}
+  .cost-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0;}
+  .cost-item{text-align:center;padding:16px 10px;border-radius:10px;background:var(--bg);}
+  .cost-item .n{font-size:24px;font-weight:800;color:var(--dark2);}
+  .cost-item .n.up{color:var(--amber);}
+  .cost-item .n.good{color:var(--green);}
+  .cost-item .t{font-size:12px;color:var(--muted);margin-top:4px;}
+
+  /* next steps */
+  .steps{counter-reset:s;}
+  .step{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);}
+  .step:last-child{border-bottom:none;}
+  .step .n{counter-increment:s;flex-shrink:0;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--magenta));color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .n::before{content:counter(s);}
+  .step p{font-size:14.5px;color:#37474d;padding-top:4px;}
+  .step p b{color:var(--dark2);}
+
+  footer{background:var(--dark);color:#fff;padding:38px 56px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+  .brand-logo-footer{height:44px;width:auto;}
+  footer .f-contact{font-size:13px;color:#c9d8dd;text-align:right;}
+  footer .f-contact b{color:#fff;}
+
+  @media(max-width:720px){
+    .hero,section,footer{padding-left:24px;padding-right:24px;}
+    .kpi-row,.cost-compare{grid-template-columns:1fr;}
+    .conj-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:28px;}
+    footer{flex-direction:column;align-items:flex-start;}
+    footer .f-contact{text-align:left;}
+  }
+  @media print{body{background:#fff;} section,.conj,.callout,.trend-box{break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <img class="brand-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTA4MCAzMDMuMzIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEsIC5jbHMtMiB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmb250LWZhbWlseTogQXJib3JpYS1Cb29rLCBBcmJvcmlhOwogICAgICAgIGZvbnQtc2l6ZTogNTguOTdweDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cmVjdCBjbGFzcz0iY2xzLTEiIHg9IjE2NC40NyIgeT0iMjcuMTEiIHdpZHRoPSI4NC4zNSIgaGVpZ2h0PSI2My42OCIgcng9IjE4Ljk0IiByeT0iMTguOTQiLz4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNjkuNzYsMjE4LjE3Yy0xNi4zNCwwLTI5LjY0LTEzLjI5LTI5LjY0LTI5LjY0di0xOC42OWMwLTE5LjExLTE1LjQ5LTM0LjYxLTM0LjYxLTM0LjYxaC0zOS4wMWMtMTYuMzQsMC0yOS42NC0xMy4yOS0yOS42NC0yOS42NHYtNDkuOTNjMC0xNi4zNCwxMy4yOS0yOS42NCwyOS42NC0yOS42NGg0OS45M2MxNi4zNCwwLDI5LjY0LDEzLjI5LDI5LjY0LDI5LjY0djE4LjY5YzAsMTkuMTEsMTUuNDksMzQuNjEsMzQuNjEsMzQuNjFoMzkuMDFjMTYuMzQsMCwyOS42NCwxMy4yOSwyOS42NCwyOS42NHY0OS45M2MwLDE2LjM0LTEzLjI5LDI5LjY0LTI5LjY0LDI5LjY0aC00OS45M1oiLz4KICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTY5Ljc2LDIxOC4xN2MtMTYuMzQsMC0yOS42NC0xMy4yOS0yOS42NC0yOS42NHYtMTguNjljMC0xOS4xMS0xNS40OS0zNC42MS0zNC42MS0zNC42MWgtMzkuMDFjLTE2LjM0LDAtMjkuNjQtMTMuMjktMjkuNjQtMjkuNjR2LTQ5LjkzYzAtMTYuMzQsMTMuMjktMjkuNjQsMjkuNjQtMjkuNjRoNDkuOTNjMTYuMzQsMCwyOS42NCwxMy4yOSwyOS42NCwyOS42NHYxOC42OWMwLDE5LjExLDE1LjQ5LDM0LjYxLDM0LjYxLDM0LjYxaDM5LjAxYzE2LjM0LDAsMjkuNjQsMTMuMjksMjkuNjQsMjkuNjR2NDkuOTNjMCwxNi4zNC0xMy4yOSwyOS42NC0yOS42NCwyOS42NGgtNDkuOTNaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDE0LjY0LDE4NC41NGMwLDIxLjUxLTkuODgsMzQuMy0zMC4yMywzNC4zaC01MS40NGMtMTcuMTUsMC0yOS42NC0xMC40Ni0yOS42NC0zMy4xM3YtMjNjMC00LjE1LDMuMzYtNy41Miw3LjUyLTcuNTJoMTguMzljNC4xNSwwLDcuNTIsMy4zNiw3LjUyLDcuNTJ2MTguMWMwLDQuMTUsMy4zNiw3LjUyLDcuNTIsNy41MmgyOS40NGM0LjE1LDAsNy41Mi0zLjM2LDcuNTItNy41MnYtMjVjMC0yLjg3LTEuNjMtNS40OC00LjItNi43NWwtNTcuOTktMjguNDVjLTExLjYzLTYuMzktMTUuNjktMTIuNzktMTUuNjktMjcuNjF2LTM0YzAtMjAuOTMsMTAuMTctMjkuMDYsMjkuMDYtMjkuMDZoNTIuMzFjMjIuNjcsMCwyOS45NCwxMC43NSwyOS45NCwzNC4zdjE4LjY0YzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xOC4zOWMtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTE0LjYxYzAtNC4xNS0zLjM2LTcuNTItNy41Mi03LjUyaC0yOS40NGMtNC4xNSwwLTcuNTIsMy4zNi03LjUyLDcuNTJ2MTkuNzVjMCwyLjg4LDEuNjQsNS41LDQuMjMsNi43Nmw1OC41NSwyOC40NmMxMS42Myw2LjEsMTUuMTEsMTIuNSwxNS4xMSwyNy45djMzLjQyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDM0LjQxLDM5LjY4aDE3LjIzYzQuMTUsMCw3LjUyLDMuMzYsNy41Miw3LjUydjE0LjAzYzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xNy4yM2MtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTE0LjAzYzAtNC4xNSwzLjM2LTcuNTIsNy41Mi03LjUyWk00MzQuNDEsODEuMDhoMTcuMjNjNC4xNSwwLDcuNTIsMy4zNiw3LjUyLDcuNTJ2MTIyLjczYzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xNy4yM2MtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTEyMi43M2MwLTQuMTUsMy4zNi03LjUyLDcuNTItNy41MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTkwMC45OCwzOS42OGgxNy4yM2M0LjE1LDAsNy41MiwzLjM2LDcuNTIsNy41MnYxNC4wM2MwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjNjLTQuMTUsMC03LjUyLTMuMzYtNy41Mi03LjUydi0xNC4wM2MwLTQuMTUsMy4zNi03LjUyLDcuNTItNy41MlpNOTAwLjk4LDgxLjA4aDE3LjIzYzQuMTUsMCw3LjUyLDMuMzYsNy41Miw3LjUydjEyMi43M2MwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjNjLTQuMTUsMC03LjUyLTMuMzYtNy41Mi03LjUydi0xMjIuNzNjMC00LjE1LDMuMzYtNy41Miw3LjUyLTcuNTJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00ODAuMTEsODEuMDhoMTYuOThjNC4xOCwwLDcuNTYsMy40MSw3LjUxLDcuNTlsLS4wNCwzLjQ1YzkuMy00Ljk0LDI0LjEyLTEyLjIxLDQxLjU2LTEyLjIxLDE5Ljc2LDAsMjcuMzIsOS44OCwyNy4zMiwyOS4zNXYxMDIuMDVjMCw0LjE1LTMuMzYsNy41Mi03LjUyLDcuNTJoLTE2Ljk0Yy00LjE1LDAtNy41Mi0zLjM2LTcuNTItNy41MnYtOTMuMDljMC00LjE1LTMuMzYtNy41Mi03LjUyLTcuNTJoLTIxLjU5Yy00LjE1LDAtNy41MiwzLjM2LTcuNTIsNy41MnY5My4wOWMwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjNjLTQuMTUsMC03LjUyLTMuMzYtNy41Mi03LjUydi0xMjIuNzNjMC00LjE1LDMuMzYtNy41Miw3LjUyLTcuNTJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01ODYuODIsMTg2di03Mi4zN2MwLTIxLjUxLDExLjA0LTMyLjU1LDMxLjM5LTMyLjU1aDMzLjU2YzIwLjYzLDAsMzAuNTIsMTAuNzUsMzAuNTIsMzEuOTd2NDQuMTVjMCwzLjUzLTIuODYsNi4zOS02LjM5LDYuMzloLTUwLjk5Yy0zLjUzLDAtNi4zOSwyLjg2LTYuMzksNi4zOXYxNS4xNGMwLDMuNTMsMi44Niw2LjM5LDYuMzksNi4zOWgxOS44MWMzLjUzLDAsNi4zOS0yLjg2LDYuMzktNi4zOWgwYzAtMy41MywyLjg2LTYuMzksNi4zOS02LjM5aDE4LjMxYzMuNTMsMCw2LjM5LDIuODYsNi4zOSw2LjM5djEuNDVjMCwyMS44LTkuNTksMzIuMjYtMzAuODEsMzIuMjZoLTMyLjU5Yy0yMC42NCwwLTMxLjk3LTEwLjQ2LTMxLjk3LTMyLjg0Wk02MTguNSwxMTUuOTV2MTguMzFjMCwzLjUzLDIuODYsNi4zOSw2LjM5LDYuMzloMjUuNThjMy41MywwLDYuMzktMi44Niw2LjM5LTYuMzl2LTE4LjMxYzAtMy41My0yLjg2LTYuMzktNi4zOS02LjM5aC0yNS41OGMtMy41MywwLTYuMzksMi44Ni02LjM5LDYuMzlaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik03MDMuMzcsODEuMDhoMTYuNDdjMy44NywwLDcuMSwyLjk0LDcuNDgsNi43OWwuNSw1LjEzYzQuODMtMy42MiwxNi4wNy0xMC4yNSwzMC41Ni0xMi4zOSw0Ljc3LS43MSw4Ljk0LDMuMjYsOC41NCw4LjA3bC0uMSwxNi4yNGMtLjMyLDMuOS0zLjU4LDYuOS03LjQ5LDYuOWwtMjMuNy0uMjFjLTQuMTUsMC03LjUyLDMuMzYtNy41Miw3LjUydjkyLjIxYzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xNy4yM2MtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTEyMi43M2MwLTQuMTUsMy4zNi03LjUyLDcuNTItNy41MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTc4OC42NywyNDcuMTdoNTguNDZ2LTM5LjA4Yy0yLjAzLDEuNzQtMTguMzEsMTEuMzMtNDAuMTEsMTEuMzMtMjIuOTYsMC0zMS4zOS0xMi4yMS0zMS4zOS0yOS42NXYtNzkuOTJjMC0xNy43Myw4LjE0LTI5Ljk0LDMxLjM5LTI5Ljk0LDE2LjI4LDAsMzEuNjgsNi4xLDQwLjQsMTEuNjNsLjQyLTMuNzhjLjQyLTMuODEsMy42NC02LjY5LDcuNDctNi42OWgxNi4yOGM0LjE1LDAsNy41MiwzLjM2LDcuNTIsNy41MnYxNTUuNjdjMCwyMS4yMi03LjU2LDMwLjgxLTI4LjQ4LDMwLjgxaC02Mi4xMmMtNC40MywwLTcuOS0zLjgxLTcuNDgtOC4yMmwuMTctMTIuODdjLjM2LTMuODYsMy42LTYuODEsNy40OC02LjgxWk04NDcuMTMsMTgxLjk3di02My43M2MwLTQuMTUtMy4zNi03LjUyLTcuNTItNy41MmgtMjQuMmMtNC4xNSwwLTcuNTIsMy4zNi03LjUyLDcuNTJ2NjMuNzNjMCw0LjE1LDMuMzYsNy41Miw3LjUyLDcuNTJoMjQuMmM0LjE1LDAsNy41Mi0zLjM2LDcuNTItNy41MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTkzOS4zNywxOTAuMDd2LTgwLjIyYzAtMTcuNzMsOC4xNC0yOS45NCwzMC41Mi0yOS45NCwxNi41NywwLDMyLjI2LDUuODEsNDAuOTgsMTEuNjNsLS4wMy0yLjg4Yy0uMDQtNC4xOCwzLjM0LTcuNTksNy41Mi03LjU5aDE3LjI2YzQuMTUsMCw3LjUyLDMuMzYsNy41Miw3LjUydjEyMi43M2MwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjZjLTQuMTgsMC03LjU1LTMuNDEtNy41Mi03LjU5bC4wMy0yLjg4Yy0yLjAzLDEuNzQtMTkuNzYsMTEuNjMtNDAuOTgsMTEuNjNzLTMwLjUyLTEyLjIxLTMwLjUyLTI5Ljk0Wk0xMDEwLjg3LDE4MS45N3YtNjMuNzNjMC00LjE1LTMuMzYtNy41Mi03LjUyLTcuNTJoLTI0LjJjLTQuMTUsMC03LjUyLDMuMzYtNy41Miw3LjUydjYzLjczYzAsNC4xNSwzLjM2LDcuNTIsNy41Miw3LjUyaDI0LjJjNC4xNSwwLDcuNTItMy4zNiw3LjUyLTcuNTJaIi8+CiAgPC9nPgogIDx0ZXh0IGNsYXNzPSJjbHMtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTkzLjM1IDI3NC42NSkiPjx0c3BhbiB4PSIwIiB5PSIwIj5zdHVkaW88L3RzcGFuPjwvdGV4dD4KPC9zdmc+" alt="Sinergia MKT Studio">
+    <span class="kicker"></span>
+    <h1>Reporte de <span>resultados</span></h1>
+    <p class="sub">Cómo se comportaron tus campañas de Meta Ads y qué haremos para seguir mejorando.</p>
+    <div class="meta-row">
+      <div class="chip">Cliente: <b>Delicatessen</b></div>
+      <div class="chip">Periodo: <b>28 jul – 26 ago 2026</b></div>
+      <div class="chip">Objetivo: <b>Mensajes por WhatsApp</b></div>
+    </div>
+  </div>
+
+  <!-- 01 RESUMEN -->
+  <section>
+    <div class="sec-head"><div class="sec-num">01</div><div class="sec-title">Resumen del mes</div></div>
+    <div class="sec-sub">Lo esencial en una mirada</div>
+    <div class="kpi-row">
+      <div class="kpi-card accent"><div class="big">103</div><div class="lbl">Conversaciones por WhatsApp</div></div>
+      <div class="kpi-card"><div class="big">$1,597</div><div class="lbl">Inversión total en el mes</div></div>
+      <div class="kpi-card"><div class="big">35,272</div><div class="lbl">Veces que se mostraron tus anuncios</div></div>
+    </div>
+    <div class="intro" style="margin-top:20px;">
+      <p>Durante este primer mes, tus anuncios generaron <b>103 conversaciones por WhatsApp</b> de personas interesadas en tus productos. Ese es el corazón del resultado: gente real escribiéndote para preguntar y comprar.</p>
+      <p>A continuación te desglosamos cómo se comportó cada campaña, qué está funcionando bien y el plan para que cada conversación te cueste menos en las próximas semanas.</p>
+    </div>
+  </section>
+
+  <!-- 02 POR CONJUNTO -->
+  <section style="padding-top:0;">
+    <div class="sec-head"><div class="sec-num">02</div><div class="sec-title">Resultados por campaña</div></div>
+    <div class="sec-sub">Tenemos dos campañas corriendo con objetivos distintos</div>
+    <div class="conj-grid">
+      <div class="conj">
+        <div class="conj-top tablas"><span class="ic">🧀</span><h4>Tablas y charolas</h4></div>
+        <div class="conj-body">
+          <div class="metric-line"><span class="k">Conversaciones</span><span class="v">82</span></div>
+          <div class="metric-line"><span class="k">Costo por conversación</span><span class="v">$12.91</span></div>
+          <div class="metric-line"><span class="k">Inversión</span><span class="v">$1,058.24</span></div>
+          <div class="metric-line"><span class="k">Personas alcanzadas</span><span class="v">13,220</span></div>
+        </div>
+      </div>
+      <div class="conj">
+        <div class="conj-top eventos"><span class="ic">🎉</span><h4>Barra para eventos</h4></div>
+        <div class="conj-body">
+          <div class="metric-line"><span class="k">Conversaciones</span><span class="v">21</span></div>
+          <div class="metric-line"><span class="k">Costo por conversación</span><span class="v">$25.69</span></div>
+          <div class="metric-line"><span class="k">Inversión</span><span class="v">$539.42</span></div>
+          <div class="metric-line"><span class="k">Personas alcanzadas</span><span class="v">4,596</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout green" style="margin-top:20px;">
+      <h4>✓ Lo que está funcionando</h4>
+      <p>La campaña de <b>tablas y charolas</b> es la más eficiente: cada conversación cuesta la mitad que la de eventos. Es normal, porque comprar una charola es una decisión rápida, mientras que contratar una barra para un evento se piensa con más calma.</p>
+      <p>Sobre <b>eventos</b>: aunque cada conversación cuesta un poco más, recuerda que un solo evento contratado vale muchísimo más que una charola. Basta con que una de esas 21 conversaciones se convierta en una barra grande para que la campaña se pague varias veces.</p>
+    </div>
+  </section>
+
+  <!-- 03 EL RETO: COSTO SUBIENDO -->
+  <section style="padding-top:0;">
+    <div class="sec-head"><div class="sec-num">03</div><div class="sec-title">El punto a mejorar</div></div>
+    <div class="sec-sub">Por qué el costo empezó a subir y qué significa</div>
+    <div class="trend-box">
+      <h4>El costo por conversación fue subiendo a lo largo del mes</h4>
+      <p style="font-size:14.5px;color:#37474d;">Al inicio, cada conversación era muy barata. Con el paso de los días fue costando más conseguir cada una. Esto es completamente normal y tiene una explicación sencilla.</p>
+      <div class="cost-compare">
+        <div class="cost-item"><div class="n good">~$10</div><div class="t">Costo al inicio<br>(primeros días)</div></div>
+        <div class="cost-item"><div class="n">$12.91</div><div class="t">Tu promedio del mes<br>(tablas y charolas)</div></div>
+        <div class="cost-item"><div class="n up">$53.90</div><div class="t">Costo al cierre del mes<br>(último día medido)</div></div>
+      </div>
+      <p style="font-size:14.5px;color:#37474d;"><b>¿Por qué pasa esto?</b> Es lo que llamamos "desgaste del anuncio". Cuando el mismo video se muestra durante muchos días, las personas de tu zona ya lo vieron varias veces y dejan de reaccionar igual. Entonces la plataforma cobra más por cada nueva conversación. Es la señal clara de que llegó el momento de refrescar el contenido.</p>
+    </div>
+    <div class="callout amber" style="margin-top:18px;">
+      <h4>La buena noticia</h4>
+      <p>Este desgaste se soluciona con <b>contenido nuevo</b>. Renovar los videos reinicia el interés de la audiencia y vuelve a bajar el costo por conversación. Ya lo teníamos contemplado y es justo el siguiente paso del plan.</p>
+    </div>
+  </section>
+
+  <!-- 04 PLAN -->
+  <section style="padding-top:0;">
+    <div class="sec-head"><div class="sec-num">04</div><div class="sec-title">Nuestro plan para el siguiente periodo</div></div>
+    <div class="sec-sub">Acciones concretas para bajar el costo y traer más pedidos</div>
+    <div class="steps">
+      <div class="step"><div class="n"></div><p><b>Renovar los creativos.</b> Produciremos nuevos videos para reemplazar los que ya se desgastaron. Esto reactiva a la audiencia y baja el costo por conversación.</p></div>
+      <div class="step"><div class="n"></div><p><b>Dar espacio propio a cada producto.</b> Reorganizaremos las campañas para que cada video tenga la oportunidad de rendir, en lugar de competir entre sí.</p></div>
+      <div class="step"><div class="n"></div><p><b>Poner más fuerza en lo que ya gana.</b> La línea de tablas y charolas es la más rentable; le daremos más presencia mientras cuidamos el costo.</p></div>
+      <div class="step"><div class="n"></div><p><b>Cuidar la campaña de eventos.</b> La mantenemos activa por su alto valor. Para medir su rentabilidad real, nos ayudaría saber cuántas de esas conversaciones se convirtieron en eventos contratados.</p></div>
+      <div class="step"><div class="n"></div><p><b>Seguir midiendo semana a semana</b> para ajustar a tiempo y aprovechar mejor cada peso invertido.</p></div>
+    </div>
+    <div class="callout green" style="margin-top:20px;">
+      <h4>En resumen</h4>
+      <p>Tu primer mes trajo <b>103 conversaciones reales</b> por WhatsApp. Ahora que sabemos qué funciona, el foco es <b>refrescar el contenido</b> para que cada conversación cueste menos y lleguen más pedidos. Vamos por buen camino.</p>
+    </div>
+  </section>
+
+  <footer>
+    <img class="brand-logo-footer" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8xIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTA4MCAzMDMuMzIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEsIC5jbHMtMiB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmb250LWZhbWlseTogQXJib3JpYS1Cb29rLCBBcmJvcmlhOwogICAgICAgIGZvbnQtc2l6ZTogNTguOTdweDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGc+CiAgICA8cmVjdCBjbGFzcz0iY2xzLTEiIHg9IjE2NC40NyIgeT0iMjcuMTEiIHdpZHRoPSI4NC4zNSIgaGVpZ2h0PSI2My42OCIgcng9IjE4Ljk0IiByeT0iMTguOTQiLz4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNjkuNzYsMjE4LjE3Yy0xNi4zNCwwLTI5LjY0LTEzLjI5LTI5LjY0LTI5LjY0di0xOC42OWMwLTE5LjExLTE1LjQ5LTM0LjYxLTM0LjYxLTM0LjYxaC0zOS4wMWMtMTYuMzQsMC0yOS42NC0xMy4yOS0yOS42NC0yOS42NHYtNDkuOTNjMC0xNi4zNCwxMy4yOS0yOS42NCwyOS42NC0yOS42NGg0OS45M2MxNi4zNCwwLDI5LjY0LDEzLjI5LDI5LjY0LDI5LjY0djE4LjY5YzAsMTkuMTEsMTUuNDksMzQuNjEsMzQuNjEsMzQuNjFoMzkuMDFjMTYuMzQsMCwyOS42NCwxMy4yOSwyOS42NCwyOS42NHY0OS45M2MwLDE2LjM0LTEzLjI5LDI5LjY0LTI5LjY0LDI5LjY0aC00OS45M1oiLz4KICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTY5Ljc2LDIxOC4xN2MtMTYuMzQsMC0yOS42NC0xMy4yOS0yOS42NC0yOS42NHYtMTguNjljMC0xOS4xMS0xNS40OS0zNC42MS0zNC42MS0zNC42MWgtMzkuMDFjLTE2LjM0LDAtMjkuNjQtMTMuMjktMjkuNjQtMjkuNjR2LTQ5LjkzYzAtMTYuMzQsMTMuMjktMjkuNjQsMjkuNjQtMjkuNjRoNDkuOTNjMTYuMzQsMCwyOS42NCwxMy4yOSwyOS42NCwyOS42NHYxOC42OWMwLDE5LjExLDE1LjQ5LDM0LjYxLDM0LjYxLDM0LjYxaDM5LjAxYzE2LjM0LDAsMjkuNjQsMTMuMjksMjkuNjQsMjkuNjR2NDkuOTNjMCwxNi4zNC0xMy4yOSwyOS42NC0yOS42NCwyOS42NGgtNDkuOTNaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDE0LjY0LDE4NC41NGMwLDIxLjUxLTkuODgsMzQuMy0zMC4yMywzNC4zaC01MS40NGMtMTcuMTUsMC0yOS42NC0xMC40Ni0yOS42NC0zMy4xM3YtMjNjMC00LjE1LDMuMzYtNy41Miw3LjUyLTcuNTJoMTguMzljNC4xNSwwLDcuNTIsMy4zNiw3LjUyLDcuNTJ2MTguMWMwLDQuMTUsMy4zNiw3LjUyLDcuNTIsNy41MmgyOS40NGM0LjE1LDAsNy41Mi0zLjM2LDcuNTItNy41MnYtMjVjMC0yLjg3LTEuNjMtNS40OC00LjItNi43NWwtNTcuOTktMjguNDVjLTExLjYzLTYuMzktMTUuNjktMTIuNzktMTUuNjktMjcuNjF2LTM0YzAtMjAuOTMsMTAuMTctMjkuMDYsMjkuMDYtMjkuMDZoNTIuMzFjMjIuNjcsMCwyOS45NCwxMC43NSwyOS45NCwzNC4zdjE4LjY0YzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xOC4zOWMtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTE0LjYxYzAtNC4xNS0zLjM2LTcuNTItNy41Mi03LjUyaC0yOS40NGMtNC4xNSwwLTcuNTIsMy4zNi03LjUyLDcuNTJ2MTkuNzVjMCwyLjg4LDEuNjQsNS41LDQuMjMsNi43Nmw1OC41NSwyOC40NmMxMS42Myw2LjEsMTUuMTEsMTIuNSwxNS4xMSwyNy45djMzLjQyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDM0LjQxLDM5LjY4aDE3LjIzYzQuMTUsMCw3LjUyLDMuMzYsNy41Miw3LjUydjE0LjAzYzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xNy4yM2MtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTE0LjAzYzAtNC4xNSwzLjM2LTcuNTIsNy41Mi03LjUyWk00MzQuNDEsODEuMDhoMTcuMjNjNC4xNSwwLDcuNTIsMy4zNiw3LjUyLDcuNTJ2MTIyLjczYzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xNy4yM2MtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTEyMi43M2MwLTQuMTUsMy4zNi03LjUyLDcuNTItNy41MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTkwMC45OCwzOS42OGgxNy4yM2M0LjE1LDAsNy41MiwzLjM2LDcuNTIsNy41MnYxNC4wM2MwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjNjLTQuMTUsMC03LjUyLTMuMzYtNy41Mi03LjUydi0xNC4wM2MwLTQuMTUsMy4zNi03LjUyLDcuNTItNy41MlpNOTAwLjk4LDgxLjA4aDE3LjIzYzQuMTUsMCw3LjUyLDMuMzYsNy41Miw3LjUydjEyMi43M2MwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjNjLTQuMTUsMC03LjUyLTMuMzYtNy41Mi03LjUydi0xMjIuNzNjMC00LjE1LDMuMzYtNy41Miw3LjUyLTcuNTJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00ODAuMTEsODEuMDhoMTYuOThjNC4xOCwwLDcuNTYsMy40MSw3LjUxLDcuNTlsLS4wNCwzLjQ1YzkuMy00Ljk0LDI0LjEyLTEyLjIxLDQxLjU2LTEyLjIxLDE5Ljc2LDAsMjcuMzIsOS44OCwyNy4zMiwyOS4zNXYxMDIuMDVjMCw0LjE1LTMuMzYsNy41Mi03LjUyLDcuNTJoLTE2Ljk0Yy00LjE1LDAtNy41Mi0zLjM2LTcuNTItNy41MnYtOTMuMDljMC00LjE1LTMuMzYtNy41Mi03LjUyLTcuNTJoLTIxLjU5Yy00LjE1LDAtNy41MiwzLjM2LTcuNTIsNy41MnY5My4wOWMwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjNjLTQuMTUsMC03LjUyLTMuMzYtNy41Mi03LjUydi0xMjIuNzNjMC00LjE1LDMuMzYtNy41Miw3LjUyLTcuNTJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01ODYuODIsMTg2di03Mi4zN2MwLTIxLjUxLDExLjA0LTMyLjU1LDMxLjM5LTMyLjU1aDMzLjU2YzIwLjYzLDAsMzAuNTIsMTAuNzUsMzAuNTIsMzEuOTd2NDQuMTVjMCwzLjUzLTIuODYsNi4zOS02LjM5LDYuMzloLTUwLjk5Yy0zLjUzLDAtNi4zOSwyLjg2LTYuMzksNi4zOXYxNS4xNGMwLDMuNTMsMi44Niw2LjM5LDYuMzksNi4zOWgxOS44MWMzLjUzLDAsNi4zOS0yLjg2LDYuMzktNi4zOWgwYzAtMy41MywyLjg2LTYuMzksNi4zOS02LjM5aDE4LjMxYzMuNTMsMCw2LjM5LDIuODYsNi4zOSw2LjM5djEuNDVjMCwyMS44LTkuNTksMzIuMjYtMzAuODEsMzIuMjZoLTMyLjU5Yy0yMC42NCwwLTMxLjk3LTEwLjQ2LTMxLjk3LTMyLjg0Wk02MTguNSwxMTUuOTV2MTguMzFjMCwzLjUzLDIuODYsNi4zOSw2LjM5LDYuMzloMjUuNThjMy41MywwLDYuMzktMi44Niw2LjM5LTYuMzl2LTE4LjMxYzAtMy41My0yLjg2LTYuMzktNi4zOS02LjM5aC0yNS41OGMtMy41MywwLTYuMzksMi44Ni02LjM5LDYuMzlaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik03MDMuMzcsODEuMDhoMTYuNDdjMy44NywwLDcuMSwyLjk0LDcuNDgsNi43OWwuNSw1LjEzYzQuODMtMy42MiwxNi4wNy0xMC4yNSwzMC41Ni0xMi4zOSw0Ljc3LS43MSw4Ljk0LDMuMjYsOC41NCw4LjA3bC0uMSwxNi4yNGMtLjMyLDMuOS0zLjU4LDYuOS03LjQ5LDYuOWwtMjMuNy0uMjFjLTQuMTUsMC03LjUyLDMuMzYtNy41Miw3LjUydjkyLjIxYzAsNC4xNS0zLjM2LDcuNTItNy41Miw3LjUyaC0xNy4yM2MtNC4xNSwwLTcuNTItMy4zNi03LjUyLTcuNTJ2LTEyMi43M2MwLTQuMTUsMy4zNi03LjUyLDcuNTItNy41MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTc4OC42NywyNDcuMTdoNTguNDZ2LTM5LjA4Yy0yLjAzLDEuNzQtMTguMzEsMTEuMzMtNDAuMTEsMTEuMzMtMjIuOTYsMC0zMS4zOS0xMi4yMS0zMS4zOS0yOS42NXYtNzkuOTJjMC0xNy43Myw4LjE0LTI5Ljk0LDMxLjM5LTI5Ljk0LDE2LjI4LDAsMzEuNjgsNi4xLDQwLjQsMTEuNjNsLjQyLTMuNzhjLjQyLTMuODEsMy42NC02LjY5LDcuNDctNi42OWgxNi4yOGM0LjE1LDAsNy41MiwzLjM2LDcuNTIsNy41MnYxNTUuNjdjMCwyMS4yMi03LjU2LDMwLjgxLTI4LjQ4LDMwLjgxaC02Mi4xMmMtNC40MywwLTcuOS0zLjgxLTcuNDgtOC4yMmwuMTctMTIuODdjLjM2LTMuODYsMy42LTYuODEsNy40OC02LjgxWk04NDcuMTMsMTgxLjk3di02My43M2MwLTQuMTUtMy4zNi03LjUyLTcuNTItNy41MmgtMjQuMmMtNC4xNSwwLTcuNTIsMy4zNi03LjUyLDcuNTJ2NjMuNzNjMCw0LjE1LDMuMzYsNy41Miw3LjUyLDcuNTJoMjQuMmM0LjE1LDAsNy41Mi0zLjM2LDcuNTItNy41MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTkzOS4zNywxOTAuMDd2LTgwLjIyYzAtMTcuNzMsOC4xNC0yOS45NCwzMC41Mi0yOS45NCwxNi41NywwLDMyLjI2LDUuODEsNDAuOTgsMTEuNjNsLS4wMy0yLjg4Yy0uMDQtNC4xOCwzLjM0LTcuNTksNy41Mi03LjU5aDE3LjI2YzQuMTUsMCw3LjUyLDMuMzYsNy41Miw3LjUydjEyMi43M2MwLDQuMTUtMy4zNiw3LjUyLTcuNTIsNy41MmgtMTcuMjZjLTQuMTgsMC03LjU1LTMuNDEtNy41Mi03LjU5bC4wMy0yLjg4Yy0yLjAzLDEuNzQtMTkuNzYsMTEuNjMtNDAuOTgsMTEuNjNzLTMwLjUyLTEyLjIxLTMwLjUyLTI5Ljk0Wk0xMDEwLjg3LDE4MS45N3YtNjMuNzNjMC00LjE1LTMuMzYtNy41Mi03LjUyLTcuNTJoLTI0LjJjLTQuMTUsMC03LjUyLDMuMzYtNy41Miw3LjUydjYzLjczYzAsNC4xNSwzLjM2LDcuNTIsNy41Miw3LjUyaDI0LjJjNC4xNSwwLDcuNTItMy4zNiw3LjUyLTcuNTJaIi8+CiAgPC9nPgogIDx0ZXh0IGNsYXNzPSJjbHMtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTkzLjM1IDI3NC42NSkiPjx0c3BhbiB4PSIwIiB5PSIwIj5zdHVkaW88L3RzcGFuPjwvdGV4dD4KPC9zdmc+" alt="Sinergia MKT Studio">
+    <div class="f-contact">Reporte preparado para <b>Delicatessen</b><br>Aguascalientes · Meta Ads · 28 jul – 26 ago 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
