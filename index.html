@@ -259,7 +259,7 @@ body{background:var(--navy);color:var(--light);font-family:'DM Sans',sans-serif;
       </div>
     </div>
     <div style="margin-top:36px;opacity:0;animation:fadeUp .7s .85s forwards;">
-      <button onclick="window.print()" class="dl-btn" data-en="⬇ Download CV (PDF)" data-es="⬇ Descargar CV (PDF)">⬇ Download CV (PDF)</button>
+      <button onclick="downloadCV()" class="dl-btn" data-en="⬇ Download CV (PDF)" data-es="⬇ Descargar CV (PDF)">⬇ Download CV (PDF)</button>
     </div>
   </div>
 </section>
@@ -716,6 +716,30 @@ body{background:var(--navy);color:var(--light);font-family:'DM Sans',sans-serif;
 </div><!-- end .print-cv -->
 
 <script>
+// ── DOWNLOAD CV ──
+function downloadCV() {
+  const btn = document.querySelector('.dl-btn');
+  btn.textContent = '⏳ Generando PDF...';
+  btn.disabled = true;
+
+  const el = document.querySelector('.print-cv');
+  el.style.display = 'block';
+
+  const opt = {
+    margin:      [12, 14, 12, 14],
+    filename:    'SalvadorOlivares_CV.pdf',
+    image:       { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, logging: false },
+    jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(el).save().then(() => {
+    el.style.display = 'none';
+    btn.textContent = '⬇ Download CV (PDF)';
+    btn.disabled = false;
+  });
+}
+
 // ── NAV SCROLL ──
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -760,5 +784,6 @@ const subtitles = {
   ]
 };
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>
