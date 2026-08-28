@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salvador Olivares — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #022b3a;
+  --navy2:  #04374b;
+  --pink:   #fc2bb6;
+  --teal:   #47bfd7;
+  --light:  #e1e5f2;
+  --gray:   #7a90a4;
+  --white:  #ffffff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--light);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,backdrop-filter .3s;}
+.nav.scrolled{background:rgba(2,43,58,0.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(71,191,215,0.12);}
+.nav-logo svg{height:20px;width:auto;display:block;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--teal);}
+.lang-toggle{display:flex;gap:0;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;border:1px solid rgba(71,191,215,0.15);}
+.lang-btn{font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 12px;cursor:pointer;border:none;background:transparent;color:var(--gray);transition:all .2s;}
+.lang-btn.active{background:var(--teal);color:var(--navy);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 40px 80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(71,191,215,0.08) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 15% 80%,rgba(252,43,182,0.07) 0%,transparent 60%);pointer-events:none;}
+.hero-s-bg{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:min(640px,70vw);height:auto;opacity:0.04;animation:spinSlow 30s linear infinite;}
+@keyframes spinSlow{from{transform:translateY(-50%) rotate(0deg);}to{transform:translateY(-50%) rotate(360deg);}}
+.hero-inner{position:relative;z-index:1;max-width:900px;}
+.hero-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--pink);border:1px solid rgba(252,43,182,0.3);padding:6px 14px;border-radius:2px;margin-bottom:28px;opacity:0;animation:fadeUp .6s .1s forwards;}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(48px,7vw,88px);color:var(--white);line-height:1.0;margin-bottom:20px;opacity:0;animation:fadeUp .7s .25s forwards;}
+.hero h1 em{color:var(--pink);font-style:italic;}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--gray);max-width:560px;line-height:1.8;margin-bottom:40px;opacity:0;animation:fadeUp .7s .4s forwards;}
+.hero-sub strong{color:var(--teal);}
+.hero-contacts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;opacity:0;animation:fadeUp .7s .55s forwards;}
+.contact-pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--light);background:rgba(255,255,255,0.04);border:1px solid rgba(71,191,215,0.18);border-radius:100px;padding:8px 18px;text-decoration:none;transition:all .2s;}
+.contact-pill:hover{background:rgba(71,191,215,0.1);border-color:var(--teal);color:var(--teal);}
+.contact-pill svg{width:14px;height:14px;flex-shrink:0;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .7s forwards;}
+.stat .num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--white);line-height:1;}
+.stat .num span{color:var(--pink);}
+.stat .label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── SECTIONS ── */
+.section{padding:96px 40px;max-width:1060px;margin:0 auto;}
+.section-divider{height:1px;background:rgba(71,191,215,0.1);max-width:1060px;margin:0 auto;}
+.sec-eye{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--pink);margin-bottom:18px;display:block;}
+.sec-eye.teal{color:var(--teal);}
+.sec-eye.gold{color:#f2b134;}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,40px);color:var(--white);line-height:1.15;margin-bottom:12px;}
+.sec-sub{font-size:14px;color:var(--gray);max-width:600px;line-height:1.85;margin-bottom:44px;}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.about-text{font-size:15px;color:var(--light);line-height:1.9;}
+.about-text p{margin-bottom:14px;}
+.about-text p:last-child{margin-bottom:0;}
+.about-text strong{color:var(--white);}
+.about-quick{display:flex;flex-direction:column;gap:12px;}
+.aq-item{background:rgba(255,255,255,0.025);border:1px solid rgba(71,191,215,0.1);border-radius:6px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;}
+.aq-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.aq-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:3px;}
+.aq-val{font-size:13.5px;color:var(--white);font-weight:500;}
+
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column;gap:0;}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:0 32px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.exp-item:last-child{border-bottom:none;}
+.exp-meta{}
+.exp-date{font-size:12px;color:var(--pink);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.exp-org{font-size:13px;color:var(--teal);font-weight:600;}
+.exp-loc{font-size:12px;color:var(--gray);margin-top:2px;}
+.exp-body h4{font-family:'DM Serif Display',serif;font-size:20px;color:var(--white);margin-bottom:10px;line-height:1.3;}
+.exp-body ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.exp-body li{font-size:13.5px;color:var(--light);padding-left:16px;position:relative;line-height:1.65;}
+.exp-body li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:11px;margin-top:2px;}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+.pcard{background:rgba(255,255,255,0.025);border:1px solid rgba(71,191,215,0.1);border-radius:8px;padding:24px 26px;display:flex;flex-direction:column;gap:12px;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.pcard:hover{transform:translateY(-4px);border-color:rgba(71,191,215,0.3);box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+.pcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+.pcard-icon{font-size:22px;}
+.pcard-gh{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);text-decoration:none;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:3px;border:1px solid rgba(255,255,255,0.08);transition:all .2s;flex-shrink:0;}
+.pcard-gh:hover{color:var(--teal);border-color:var(--teal);}
+.pcard-gh svg{width:12px;height:12px;}
+.pcard h4{font-size:15px;font-weight:700;color:var(--white);line-height:1.3;}
+.pcard .stack{font-size:11px;color:var(--teal);font-weight:600;}
+.pcard p{font-size:12.5px;color:var(--gray);line-height:1.65;flex:1;}
+.pcard-tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:2px;}
+.pcard-tag.software{background:rgba(71,191,215,0.1);color:var(--teal);}
+.pcard-tag.marketing{background:rgba(252,43,182,0.1);color:var(--pink);}
+.pcard-tag.academic{background:rgba(242,177,52,0.1);color:#f2b134;}
+.pcard-tag.team{background:rgba(255,255,255,0.07);color:var(--light);}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.skill-col{}
+.skill-group{margin-bottom:24px;}
+.skill-group:last-child{margin-bottom:0;}
+.sg-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;}
+.chip{font-size:11.5px;padding:5px 13px;border-radius:4px;background:rgba(255,255,255,0.04);color:var(--light);border:1px solid rgba(71,191,215,0.12);transition:all .2s;}
+.chip:hover{background:rgba(71,191,215,0.1);border-color:rgba(71,191,215,0.3);color:var(--teal);}
+.chip.pink{border-color:rgba(252,43,182,0.15);}
+.chip.pink:hover{background:rgba(252,43,182,0.1);border-color:var(--pink);color:var(--pink);}
+
+/* ── EDUCATION & COURSES ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.edu-card{background:rgba(255,255,255,0.025);border:1px solid rgba(71,191,215,0.1);border-radius:8px;padding:26px 28px;}
+.edu-card h4{font-family:'DM Serif Display',serif;font-size:19px;color:var(--white);margin-bottom:6px;line-height:1.3;}
+.edu-card .deg{font-size:13px;color:var(--teal);font-weight:600;margin-bottom:4px;}
+.edu-card .meta{font-size:12px;color:var(--gray);margin-bottom:16px;}
+.edu-card .lang-badges{display:flex;gap:8px;flex-wrap:wrap;}
+.lang-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;}
+.lang-badge.native{background:rgba(71,191,215,0.12);color:var(--teal);border:1px solid rgba(71,191,215,0.25);}
+.lang-badge.b2{background:rgba(252,43,182,0.1);color:var(--pink);border:1px solid rgba(252,43,182,0.25);}
+
+.courses-list{display:flex;flex-direction:column;gap:10px;}
+.course-item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.course-item:last-child{border-bottom:none;}
+.course-dot{width:8px;height:8px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:7px;}
+.course-body{}
+.course-name{font-size:13.5px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.course-meta{font-size:11.5px;color:var(--gray);}
+
+/* ── FOOTER ── */
+.footer{padding:48px 40px;border-top:1px solid rgba(71,191,215,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer svg{height:18px;width:auto;opacity:0.5;}
+.footer p{font-size:11px;color:var(--gray);letter-spacing:1px;}
+
+/* ── DOWNLOAD BUTTON ── */
+.dl-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 32px;background:var(--pink);color:var(--white);border:none;border-radius:4px;cursor:pointer;transition:all .2s;}
+.dl-btn:hover{background:#e0179e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(252,43,182,0.35);}
+
+/* ── PRINT / PDF CV ── */
+.print-cv{display:none;}
+
+@media print {
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{background:white!important;color:#111!important;margin:0;padding:0;}
+  .nav,.hero,.section,.section-divider,.footer,.dl-btn{display:none!important;}
+  .print-cv{display:block!important;font-family:'DM Sans',Georgia,sans-serif;font-size:10pt;line-height:1.5;color:#111;padding:14mm 16mm;max-width:none;}
+  .pcv-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #022b3a;}
+  .pcv-name{font-size:32pt;font-weight:700;color:#022b3a;letter-spacing:-1px;line-height:1;}
+  .pcv-role{font-size:12pt;font-style:italic;color:#47bfd7;margin-top:4px;font-weight:400;}
+  .pcv-contact{text-align:right;font-size:9pt;color:#444;line-height:1.8;}
+  .pcv-contact a{color:#022b3a;text-decoration:none;}
+  .pcv-section{margin-bottom:14px;}
+  .pcv-sec-title{font-size:13pt;font-weight:700;color:#022b3a;margin-bottom:8px;padding-bottom:3px;display:flex;align-items:center;gap:10px;}
+  .pcv-sec-title::before{content:'';display:inline-block;width:22px;height:3px;background:#47bfd7;flex-shrink:0;}
+  .pcv-text{font-size:9.5pt;color:#333;line-height:1.6;margin-bottom:6px;}
+  .pcv-grid{display:grid;grid-template-columns:120px 1fr;gap:4px 16px;}
+  .pcv-date{font-size:9pt;color:#555;padding-top:1px;}
+  .pcv-entry{}
+  .pcv-entry-title{font-weight:700;color:#022b3a;font-size:9.5pt;}
+  .pcv-entry-sub{font-size:9pt;color:#47bfd7;font-weight:600;margin-bottom:2px;}
+  .pcv-entry-meta{font-size:8.5pt;color:#666;margin-bottom:4px;}
+  .pcv-entry ul{margin:0;padding-left:14px;font-size:9pt;color:#444;}
+  .pcv-entry li{margin-bottom:2px;line-height:1.5;}
+  .pcv-proj-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;}
+  .pcv-stack{font-size:8pt;color:#47bfd7;font-weight:600;}
+  .pcv-2col{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;}
+  .pcv-skill-group{margin-bottom:8px;}
+  .pcv-skill-label{font-size:8.5pt;font-weight:700;color:#022b3a;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
+  .pcv-skill-val{font-size:9pt;color:#333;}
+  .pcv-chips{display:flex;flex-wrap:wrap;gap:4px;}
+  .pcv-chip{font-size:8pt;padding:2px 8px;border:1px solid #ccc;border-radius:2px;color:#333;}
+  .pcv-chip.pink{border-color:#fc2bb6;color:#c4006e;}
+  .pcv-lang-row{display:flex;justify-content:space-between;font-size:9pt;padding:4px 0;border-bottom:1px solid #eee;}
+  .pcv-lang-row:last-child{border-bottom:none;}
+}
+
+/* ── FADE IN ON SCROLL ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:800px){
+  .nav{padding:0 20px;} .nav-links{gap:16px;}
+  .hero{padding:100px 20px 60px;}
+  .section{padding:64px 20px;}
+  .about-grid,.exp-item,.skills-grid,.edu-grid{grid-template-columns:1fr;}
+  .exp-item{gap:12px;}
+  .hero-stats{gap:24px;}
+  .footer{padding:36px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">
+    <!-- Sinergia logo white inline -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 303.32" height="20"><g><rect fill="#fff" x="164.47" y="27.11" width="84.35" height="63.68" rx="18.94"/><path fill="#fff" d="M169.76,218.17c-16.34,0-29.64-13.29-29.64-29.64v-18.69c0-19.11-15.49-34.61-34.61-34.61h-39.01c-16.34,0-29.64-13.29-29.64-29.64v-49.93c0-16.34,13.29-29.64,29.64-29.64h49.93c16.34,0,29.64,13.29,29.64,29.64v18.69c0,19.11,15.49,34.61,34.61,34.61h39.01c16.34,0,29.64,13.29,29.64,29.64v49.93c0,16.34-13.29,29.64-29.64,29.64h-49.93Z"/></g><g><path fill="#fff" d="M414.64,184.54c0,21.51-9.88,34.3-30.23,34.3h-51.44c-17.15,0-29.64-10.46-29.64-33.13v-23c0-4.15,3.36-7.52,7.52-7.52h18.39c4.15,0,7.52,3.36,7.52,7.52v18.1c0,4.15,3.36,7.52,7.52,7.52h29.44c4.15,0,7.52-3.36,7.52-7.52v-25c0-2.87-1.63-5.48-4.2-6.75l-57.99-28.45c-11.63-6.39-15.69-12.79-15.69-27.61v-34c0-20.93,10.17-29.06,29.06-29.06h52.31c22.67,0,29.94,10.75,29.94,34.3v18.64c0,4.15-3.36,7.52-7.52,7.52h-18.39c-4.15,0-7.52-3.36-7.52-7.52v-14.61c0-4.15-3.36-7.52-7.52-7.52h-29.44c-4.15,0-7.52,3.36-7.52,7.52v19.75c0,2.88,1.64,5.5,4.23,6.76l58.55,28.46c11.63,6.1,15.11,12.5,15.11,27.9v33.42Z"/><path fill="#fff" d="M434.41,39.68h17.23c4.15,0,7.52,3.36,7.52,7.52v14.03c0,4.15-3.36,7.52-7.52,7.52h-17.23c-4.15,0-7.52-3.36-7.52-7.52v-14.03c0-4.15,3.36-7.52,7.52-7.52ZM434.41,81.08h17.23c4.15,0,7.52,3.36,7.52,7.52v122.73c0,4.15-3.36,7.52-7.52,7.52h-17.23c-4.15,0-7.52-3.36-7.52-7.52v-122.73c0-4.15,3.36-7.52,7.52-7.52Z"/><path fill="#fff" d="M900.98,39.68h17.23c4.15,0,7.52,3.36,7.52,7.52v14.03c0,4.15-3.36,7.52-7.52,7.52h-17.23c-4.15,0-7.52-3.36-7.52-7.52v-14.03c0-4.15,3.36-7.52,7.52-7.52ZM900.98,81.08h17.23c4.15,0,7.52,3.36,7.52,7.52v122.73c0,4.15-3.36,7.52-7.52,7.52h-17.23c-4.15,0-7.52-3.36-7.52-7.52v-122.73c0-4.15,3.36-7.52,7.52-7.52Z"/><path fill="#fff" d="M480.11,81.08h16.98c4.18,0,7.56,3.41,7.51,7.59l-.04,3.45c9.3-4.94,24.12-12.21,41.56-12.21,19.76,0,27.32,9.88,27.32,29.35v102.05c0,4.15-3.36,7.52-7.52,7.52h-16.94c-4.15,0-7.52-3.36-7.52-7.52v-93.09c0-4.15-3.36-7.52-7.52-7.52h-21.59c-4.15,0-7.52,3.36-7.52,7.52v93.09c0,4.15-3.36,7.52-7.52,7.52h-17.23c-4.15,0-7.52-3.36-7.52-7.52v-122.73c0-4.15,3.36-7.52,7.52-7.52Z"/><path fill="#fff" d="M586.82,186v-72.37c0-21.51,11.04-32.55,31.39-32.55h33.56c20.63,0,30.52,10.75,30.52,31.97v44.15c0,3.53-2.86,6.39-6.39,6.39h-50.99c-3.53,0-6.39,2.86-6.39,6.39v15.14c0,3.53,2.86,6.39,6.39,6.39h19.81c3.53,0,6.39-2.86,6.39-6.39c0-3.53,2.86-6.39,6.39-6.39h18.31c3.53,0,6.39,2.86,6.39,6.39v1.45c0,21.8-9.59,32.26-30.81,32.26h-32.59c-20.64,0-31.97-10.46-31.97-32.84ZM618.5,115.95v18.31c0,3.53,2.86,6.39,6.39,6.39h25.58c3.53,0,6.39-2.86,6.39-6.39v-18.31c0-3.53-2.86-6.39-6.39-6.39h-25.58c-3.53,0-6.39,2.86-6.39,6.39Z"/><path fill="#fff" d="M703.37,81.08h16.47c3.87,0,7.1,2.94,7.48,6.79l.5,5.13c4.83-3.62,16.07-10.25,30.56-12.39,4.77-.71,8.94,3.26,8.54,8.07l-.1,16.24c-.32,3.9-3.58,6.9-7.49,6.9l-23.7-.21c-4.15,0-7.52,3.36-7.52,7.52v92.21c0,4.15-3.36,7.52-7.52,7.52h-17.23c-4.15,0-7.52-3.36-7.52-7.52v-122.73c0-4.15,3.36-7.52,7.52-7.52Z"/><path fill="#fff" d="M788.67,247.17h58.46v-39.08c-2.03,1.74-18.31,11.33-40.11,11.33-22.96,0-31.39-12.21-31.39-29.65v-79.92c0-17.73,8.14-29.94,31.39-29.94,16.28,0,31.68,6.1,40.4,11.63l.42-3.78c.42-3.81,3.64-6.69,7.47-6.69h16.28c4.15,0,7.52,3.36,7.52,7.52v155.67c0,21.22-7.56,30.81-28.48,30.81h-62.12c-4.43,0-7.9-3.81-7.48-8.22l.17-12.87c.36-3.86,3.6-6.81,7.48-6.81ZM847.13,181.97v-63.73c0-4.15-3.36-7.52-7.52-7.52h-24.2c-4.15,0-7.52,3.36-7.52,7.52v63.73c0,4.15,3.36,7.52,7.52,7.52h24.2c4.15,0,7.52-3.36,7.52-7.52Z"/><path fill="#fff" d="M939.37,190.07v-80.22c0-17.73,8.14-29.94,30.52-29.94,16.57,0,32.26,5.81,40.98,11.63l-.03-2.88c-.04-4.18,3.34-7.59,7.52-7.59h17.26c4.15,0,7.52,3.36,7.52,7.52v122.73c0,4.15-3.36,7.52-7.52,7.52h-17.26c-4.18,0-7.55-3.41-7.52-7.59l.03-2.88c-2.03,1.74-19.76,11.63-40.98,11.63s-30.52-12.21-30.52-29.94ZM1010.87,181.97v-63.73c0-4.15-3.36-7.52-7.52-7.52h-24.2c-4.15,0-7.52,3.36-7.52,7.52v63.73c0,4.15,3.36,7.52,7.52,7.52h24.2c4.15,0,7.52-3.36,7.52-7.52Z"/></g><text fill="#fff" font-family="DM Sans,sans-serif" font-weight="600" font-size="58.97" transform="translate(593.35 274.65)">studio</text></svg>
+  </div>
+  <div class="nav-links">
+    <a href="#about" data-en="About" data-es="Sobre mí">About</a>
+    <a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a>
+    <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
+    <a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a>
+    <a href="#education" data-en="Education" data-es="Formación">Education</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Rotating S background -->
+  <svg class="hero-s-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 305 305" aria-hidden="true">
+    <rect fill="#fc2bb6" x="179" y="37.01" width="104.62" height="77.42" rx="23.25"/>
+    <path fill="#fc2bb6" d="M185.24,268.78c-19.76,0-35.84-16.08-35.84-35.84v-29.39c0-19.66-15.94-35.59-35.59-35.59h-56.63c-19.76,0-35.84-16.08-35.84-35.84v-60.05c0-19.76,16.08-35.84,35.84-35.84h62.6c19.76,0,35.84,16.08,35.84,35.84v29.39c0,19.66,15.94,35.59,35.59,35.59h56.63c19.76,0,35.84,16.08,35.84,35.84v60.05c0,19.76-16.08,35.84-35.84,35.84h-62.6Z"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-tag" data-en="Systems Engineering · Entrepreneur" data-es="Ingeniería en Sistemas · Emprendedor">Systems Engineering · Entrepreneur</div>
+    <h1>Salvador<br><em>Olivares</em></h1>
+    <p class="hero-sub" data-en="CS Engineering student at UAA & founder of <strong>Sinergia Studio</strong> — bridging software systems and performance marketing for real businesses." data-es="Estudiante de ISC en la UAA y fundador de <strong>Sinergia Studio</strong> — uniendo sistemas de software con marketing de rendimiento para negocios reales.">CS Engineering student at UAA & founder of <strong>Sinergia Studio</strong> — bridging software systems and performance marketing for real businesses.</p>
+    <div class="hero-contacts">
+      <a class="contact-pill" href="mailto:salvador.olivares@sinergiastudiomkt.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        salvador.olivares@sinergiastudiomkt.com
+      </a>
+      <a class="contact-pill" href="tel:+524493963356">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.42 2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +52 449 396 33 56
+      </a>
+      <a class="contact-pill" href="https://github.com/salva052" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        github.com/salva052
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">7<span>th</span></div>
+        <div class="label" data-en="Semester ISC · UAA" data-es="Semestre ISC · UAA">Semester ISC · UAA</div>
+      </div>
+      <div class="stat">
+        <div class="num">8<span>+</span></div>
+        <div class="label" data-en="Active Clients" data-es="Clientes Activos">Active Clients</div>
+      </div>
+      <div class="stat">
+        <div class="num">6<span>yrs</span></div>
+        <div class="label" data-en="Creating Content" data-es="Creando Contenido">Creating Content</div>
+      </div>
+    </div>
+    <div style="margin-top:36px;opacity:0;animation:fadeUp .7s .85s forwards;">
+      <button onclick="window.print()" class="dl-btn" data-en="⬇ Download CV (PDF)" data-es="⬇ Descargar CV (PDF)">⬇ Download CV (PDF)</button>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section class="section fade-up" id="about">
+  <span class="sec-eye" data-en="About me" data-es="Sobre mí">About me</span>
+  <h2 class="sec-title" data-en="Where systems meet <em>strategy.</em>" data-es="Donde los sistemas se encuentran con la <em>estrategia.</em>">Where systems meet <em style="color:var(--pink);font-style:italic">strategy.</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p data-en="I'm a 7th-semester Computer Systems Engineering student at UAA, Aguascalientes. In 2025 I founded <strong>Sinergia Studio</strong>, a multidisciplinary studio where I lead a team building software systems and running performance marketing campaigns for businesses across Mexico." data-es="Soy estudiante de 7° semestre de Ingeniería en Sistemas Computacionales en la UAA, Aguascalientes. En 2025 fundé <strong>Sinergia Studio</strong>, un estudio multidisciplinario donde lidero un equipo que construye sistemas de software y ejecuta campañas de marketing de rendimiento para negocios en México.">I'm a 7th-semester Computer Systems Engineering student at UAA, Aguascalientes. In 2025 I founded <strong>Sinergia Studio</strong>, a multidisciplinary studio where I lead a team building software systems and running performance marketing campaigns for businesses across Mexico.</p>
+      <p data-en="I've been creating digital content for 6 years — starting with gaming and fitness, then discovering that audience connection is a technical skill. That insight became the foundation of how I build both software and marketing systems." data-es="Llevo 6 años creando contenido digital — empecé con videojuegos y fitness, y descubrí que conectar con audiencias es una habilidad técnica. Esa perspectiva se convirtió en la base de cómo construyo tanto sistemas de software como estrategias de marketing.">I've been creating digital content for 6 years — starting with gaming and fitness, then discovering that audience connection is a technical skill. That insight became the foundation of how I build both software and marketing systems.</p>
+    </div>
+    <div class="about-quick">
+      <div class="aq-item">
+        <div class="aq-icon">📍</div>
+        <div><div class="aq-label" data-en="Location" data-es="Ubicación">Location</div><div class="aq-val">Aguascalientes, México</div></div>
+      </div>
+      <div class="aq-item">
+        <div class="aq-icon">🎓</div>
+        <div><div class="aq-label" data-en="University" data-es="Universidad">University</div><div class="aq-val">UAA · ISC · 2023–Present</div></div>
+      </div>
+      <div class="aq-item">
+        <div class="aq-icon">🌐</div>
+        <div><div class="aq-label" data-en="Languages" data-es="Idiomas">Languages</div><div class="aq-val" data-en="Spanish (Native) · English (B2)" data-es="Español (Nativo) · Inglés (B2)">Spanish (Native) · English (B2)</div></div>
+      </div>
+      <div class="aq-item">
+        <div class="aq-icon">🔗</div>
+        <div>
+          <div class="aq-label">Portfolio & GitHub</div>
+          <div class="aq-val"><a href="https://salva052.github.io" style="color:var(--teal)">salva052.github.io</a> · <a href="https://github.com/salva052" style="color:var(--teal)">github.com/salva052</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section class="section fade-up" id="experience">
+  <span class="sec-eye teal" data-en="Experience" data-es="Experiencia">Experience</span>
+  <h2 class="sec-title" data-en="Where I've built things." data-es="Dónde he construido cosas.">Where I've built things.</h2>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Aug 2025 – Present</div>
+        <div class="exp-org">Sinergia Studio</div>
+        <div class="exp-loc">Aguascalientes, MX</div>
+      </div>
+      <div class="exp-body">
+        <h4 data-en="Founder & Project Lead" data-es="Fundador y Director de Proyectos">Founder & Project Lead</h4>
+        <ul>
+          <li data-en="Founded and lead a multidisciplinary studio offering software development, performance marketing, content strategy, and automation to businesses across Mexico." data-es="Fundé y dirijo un estudio multidisciplinario que ofrece desarrollo de software, marketing de rendimiento, estrategia de contenido y automatización a negocios en México.">Founded and lead a multidisciplinary studio offering software development, performance marketing, content strategy, and automation to businesses across Mexico.</li>
+          <li data-en="Coordinate a team of 8+ developers, editors, strategists, and production staff across simultaneous client accounts." data-es="Coordino un equipo de 8+ desarrolladores, editores, estrategas y equipo de producción en múltiples cuentas de clientes.">Coordinate a team of 8+ developers, editors, strategists, and production staff across simultaneous client accounts.</li>
+          <li data-en="Design, launch, and optimize Meta Ads and Google Ads campaigns — achieving results like 430 WhatsApp conversations at $2.78/each and 166 messages at $3.99/each for local businesses." data-es="Diseño, lanzo y optimizo campañas de Meta Ads y Google Ads — logrando resultados como 430 conversaciones de WhatsApp a $2.78 c/u y 166 mensajes a $3.99 c/u para negocios locales.">Design, launch, and optimize Meta Ads and Google Ads campaigns — achieving results like 430 WhatsApp conversations at $2.78/each and 166 messages at $3.99/each for local businesses.</li>
+          <li data-en="Built internal software systems (Sinergia OS, Sinergia Puntos) replacing manual spreadsheets with real-time data-driven platforms." data-es="Construí sistemas de software internos (Sinergia OS, Sinergia Puntos) reemplazando hojas de cálculo manuales con plataformas impulsadas por datos en tiempo real.">Built internal software systems (Sinergia OS, Sinergia Puntos) replacing manual spreadsheets with real-time data-driven platforms.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Dec 2022 – Jan 2026</div>
+        <div class="exp-org">Thrifty Colosio</div>
+        <div class="exp-loc">Aguascalientes, MX</div>
+      </div>
+      <div class="exp-body">
+        <h4 data-en="Team Member" data-es="Colaborador en Atención al Cliente">Team Member</h4>
+        <ul>
+          <li data-en="Customer service in a high-traffic retail environment; developed communication and problem-solving under daily operational pressure." data-es="Atención al cliente en entorno de alto tráfico; desarrollé comunicación y resolución de problemas bajo presión operativa diaria.">Customer service in a high-traffic retail environment; developed communication and problem-solving under daily operational pressure.</li>
+          <li data-en="First business for Sinergia Studio content creation — applied operational knowledge directly to marketing strategy." data-es="Primer negocio para la creación de contenido de Sinergia Studio — apliqué conocimiento operativo directamente a la estrategia de marketing.">First business for Sinergia Studio content creation — applied operational knowledge directly to marketing strategy.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section class="section fade-up" id="projects">
+  <span class="sec-eye" data-en="Projects" data-es="Proyectos">Projects</span>
+  <h2 class="sec-title" data-en="Things I've built." data-es="Cosas que he construido.">Things I've built.</h2>
+  <p class="sec-sub" data-en="Software systems, APIs, and tools built for real clients and internal use." data-es="Sistemas de software, APIs y herramientas construidas para clientes reales y uso interno.">Software systems, APIs, and tools built for real clients and internal use.</p>
+  <div class="projects-grid">
+
+    <div class="pcard">
+      <div class="pcard-top">
+        <div><div class="pcard-icon">🖥️</div><span class="pcard-tag software">Software</span></div>
+        <a class="pcard-gh" href="https://github.com/salva052/sinergia-os" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h4 data-en="Sinergia OS — Business Management System" data-es="Sinergia OS — Sistema de Gestión Empresarial">Sinergia OS — Business Management System</h4>
+      <div class="stack">React · Node.js · Express · Prisma · PostgreSQL</div>
+      <p data-en="Full-stack internal platform to manage clients, track revenue/expenses, payroll, cash flow, and generate profitability dashboards — replacing manual spreadsheets for the agency." data-es="Plataforma full-stack interna para gestionar clientes, rastrear ingresos/egresos, nómina, flujo de caja y generar dashboards de rentabilidad — reemplazando hojas de cálculo manuales para la agencia.">Full-stack internal platform to manage clients, track revenue/expenses, payroll, cash flow, and generate profitability dashboards — replacing manual spreadsheets for the agency.</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-top">
+        <div><div class="pcard-icon">💰</div><span class="pcard-tag software">Software</span></div>
+        <a class="pcard-gh" href="https://github.com/salva052/sinergia-puntos" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h4 data-en="Sinergia Puntos — Team Compensation Tracker" data-es="Sinergia Puntos — Rastreador de Compensación por Puntos">Sinergia Puntos — Team Compensation Tracker</h4>
+      <div class="stack">React · Vite · Node.js · Express · Supabase · Railway</div>
+      <p data-en="Full-stack points-based compensation system deployed on Railway + Vercel. Assigns point values to work activities (video editing, campaign optimization, reporting) and calculates team payments automatically." data-es="Sistema de compensación por puntos full-stack desplegado en Railway + Vercel. Asigna valores de puntos a actividades laborales y calcula pagos del equipo automáticamente.">Full-stack points-based compensation system deployed on Railway + Vercel. Assigns point values to work activities and calculates team payments automatically.</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-top">
+        <div><div class="pcard-icon">🛒</div><span class="pcard-tag software">Software</span></div>
+        <a class="pcard-gh" href="https://github.com/salva052/sistema-kioskos" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h4 data-en="Kioskos — Inventory & Sales System" data-es="Kioskos — Sistema de Inventario y Ventas">Kioskos — Inventory & Sales System</h4>
+      <div class="stack">JavaScript · Node.js · Database</div>
+      <p data-en="Management system for a local fruit distributor. Supports product catalog management, sales tracking, and business operations reporting." data-es="Sistema de gestión para un distribuidor local de frutas. Soporta gestión de catálogo de productos, registro de ventas y reportes de operaciones del negocio.">Management system for a local fruit distributor. Supports product catalog, sales tracking, and operations reporting.</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-top">
+        <div><div class="pcard-icon">🛍️</div><span class="pcard-tag team">Team</span></div>
+        <a class="pcard-gh" href="https://github.com/Https-Contreras/Ecommerce-API-Equipo-Tech-Up" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h4 data-en="Ecommerce API — Team Project" data-es="Ecommerce API — Proyecto en Equipo">Ecommerce API — Team Project</h4>
+      <div class="stack">REST API · Node.js · Team Collaboration</div>
+      <p data-en="Collaborative REST API for e-commerce. Contributed to endpoint design, routing, and business logic for cart and product catalog management." data-es="API REST colaborativa para e-commerce. Contribuí al diseño de endpoints, rutas y lógica de negocio para carrito y catálogo de productos.">Collaborative REST API for e-commerce. Contributed to endpoint design, routing, and business logic for cart and product catalog management.</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-top">
+        <div><div class="pcard-icon">📱</div><span class="pcard-tag academic">Academic</span></div>
+        <a class="pcard-gh" href="https://github.com/salva052/learnow-mendix-salvador-olivares" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <h4 data-en="LearnNow — Low-Code App (Mendix)" data-es="LearnNow — App Low-Code (Mendix)">LearnNow — Low-Code App (Mendix)</h4>
+      <div class="stack">Mendix · Low-Code · Mendix Cloud</div>
+      <p data-en="Learning app built on the Mendix low-code platform. Applied process modeling, visual database design, and deployment on Mendix Cloud." data-es="App de aprendizaje construida en la plataforma low-code Mendix. Apliqué modelado de procesos, diseño de base de datos visual y despliegue en Mendix Cloud.">Learning app built on the Mendix low-code platform. Applied process modeling, visual database design, and deployment on Mendix Cloud.</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-top">
+        <div><div class="pcard-icon">📣</div><span class="pcard-tag marketing">Marketing</span></div>
+        <a class="pcard-gh" href="https://sinergiastudiomkt.com" target="_blank" style="font-size:10px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Live
+        </a>
+      </div>
+      <h4 data-en="Sinergia Studio — Performance Campaigns" data-es="Sinergia Studio — Campañas de Rendimiento">Sinergia Studio — Performance Campaigns</h4>
+      <div class="stack">Meta Ads · Google Ads · Content Strategy</div>
+      <p data-en="Designed and managed Meta Ads campaigns achieving 430 WhatsApp conversations at $2.78/each, 166 messages at $3.99/each, and VestiNovia: $101→$14 cost per conversation through creative optimization." data-es="Diseñé y gestioné campañas de Meta Ads logrando 430 conversaciones de WhatsApp a $2.78 c/u, 166 mensajes a $3.99 c/u, y VestiNovia: reducción de $101→$14 por conversación mediante optimización creativa.">Designed and managed Meta Ads campaigns achieving 430 WhatsApp conversations at $2.78/each, 166 messages at $3.99/each, and VestiNovia: $101→$14 cost per conversation.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section class="section fade-up" id="skills">
+  <span class="sec-eye teal" data-en="Skills" data-es="Habilidades">Skills</span>
+  <h2 class="sec-title" data-en="What I work with." data-es="Con qué trabajo.">What I work with.</h2>
+  <div class="skills-grid">
+    <div class="skill-col">
+      <div class="skill-group">
+        <div class="sg-label" data-en="Programming & Development" data-es="Programación y Desarrollo">Programming & Development</div>
+        <div class="chips">
+          <span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Vite</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-label" data-en="Databases & Backend" data-es="Bases de Datos y Backend">Databases & Backend</div>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">Prisma ORM</span><span class="chip">Supabase</span><span class="chip">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-label" data-en="Tools & Deployment" data-es="Herramientas y Despliegue">Tools & Deployment</div>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Vercel</span><span class="chip">Railway</span><span class="chip">Mendix</span>
+        </div>
+      </div>
+    </div>
+    <div class="skill-col">
+      <div class="skill-group">
+        <div class="sg-label" data-en="Marketing & Business" data-es="Marketing y Negocio">Marketing & Business</div>
+        <div class="chips">
+          <span class="chip pink">Meta Ads</span><span class="chip pink">Google Ads</span><span class="chip pink">Campaign Analysis</span><span class="chip pink">Content Strategy</span><span class="chip pink">Performance Marketing</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-label" data-en="Soft Skills" data-es="Habilidades Blandas">Soft Skills</div>
+        <div class="chips">
+          <span class="chip">Leadership</span><span class="chip">Teamwork</span><span class="chip">Problem Solving</span><span class="chip">Communication</span><span class="chip">Analytical Thinking</span><span class="chip">Adaptability</span><span class="chip">Self-Learning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION & COURSES -->
+<section class="section fade-up" id="education">
+  <span class="sec-eye gold" data-en="Education & Courses" data-es="Formación y Cursos">Education & Courses</span>
+  <h2 class="sec-title" data-en="Learning, always." data-es="Aprendiendo, siempre.">Learning, always.</h2>
+  <div class="edu-grid">
+    <div>
+      <div class="edu-card" style="margin-bottom:14px">
+        <h4>Universidad Autónoma de Aguascalientes</h4>
+        <div class="deg" data-en="B.Eng. Computer Systems Engineering" data-es="Ingeniería en Sistemas Computacionales">B.Eng. Computer Systems Engineering</div>
+        <div class="meta">Aguascalientes, México · 2023 – <span data-en="Present" data-es="Presente">Present</span> · 7<span data-en="th" data-es="°"> Semester</span></div>
+        <div class="lang-badges">
+          <span class="lang-badge native" data-en="Spanish · Native" data-es="Español · Nativo">Spanish · Native</span>
+          <span class="lang-badge b2">English · B2</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="courses-list">
+        <div class="course-item">
+          <div class="course-dot"></div>
+          <div class="course-body">
+            <div class="course-name" data-en="Meta Ads — Campaign Strategy & Performance" data-es="Meta Ads — Estrategia de Campaña y Rendimiento">Meta Ads — Campaign Strategy & Performance</div>
+            <div class="course-meta" data-en="Self-directed · 2024–2025 · Applied in live client campaigns" data-es="Autodirigido · 2024–2025 · Aplicado en campañas reales de clientes">Self-directed · 2024–2025 · Applied in live client campaigns</div>
+          </div>
+        </div>
+        <div class="course-item">
+          <div class="course-dot" style="background:var(--teal)"></div>
+          <div class="course-body">
+            <div class="course-name">Google Ads — Search & Performance Max</div>
+            <div class="course-meta" data-en="Google Ads Platform · 2025 · Configured and managed first agency campaign" data-es="Plataforma Google Ads · 2025 · Configuré y gestioné primera campaña de la agencia">Google Ads Platform · 2025 · Configured and managed first agency campaign</div>
+          </div>
+        </div>
+        <div class="course-item">
+          <div class="course-dot" style="background:#f2b134"></div>
+          <div class="course-body">
+            <div class="course-name" data-en="Full-Stack Web Development" data-es="Desarrollo Web Full-Stack">Full-Stack Web Development</div>
+            <div class="course-meta" data-en="Self-directed · 2024–2025 · Applied in Sinergia OS, Sinergia Puntos & client projects" data-es="Autodirigido · 2024–2025 · Aplicado en Sinergia OS, Sinergia Puntos y proyectos de clientes">Self-directed · 2024–2025 · Applied in Sinergia OS, Sinergia Puntos & client projects</div>
+          </div>
+        </div>
+        <div class="course-item">
+          <div class="course-dot" style="background:var(--teal)"></div>
+          <div class="course-body">
+            <div class="course-name">Mendix Low-Code Platform</div>
+            <div class="course-meta" data-en="Mendix Academy · 2025 · App modeling, logic & Mendix Cloud deployment" data-es="Mendix Academy · 2025 · Modelado de apps, lógica y despliegue en Mendix Cloud">Mendix Academy · 2025 · App modeling, logic & Mendix Cloud deployment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 303.32"><g><rect fill="#fff" x="164.47" y="27.11" width="84.35" height="63.68" rx="18.94"/><path fill="#fff" d="M169.76,218.17c-16.34,0-29.64-13.29-29.64-29.64v-18.69c0-19.11-15.49-34.61-34.61-34.61h-39.01c-16.34,0-29.64-13.29-29.64-29.64v-49.93c0-16.34,13.29-29.64,29.64-29.64h49.93c16.34,0,29.64,13.29,29.64,29.64v18.69c0,19.11,15.49,34.61,34.61,34.61h39.01c16.34,0,29.64,13.29,29.64,29.64v49.93c0,16.34-13.29,29.64-29.64,29.64h-49.93Z"/></g><g><path fill="#fff" d="M414.64,184.54c0,21.51-9.88,34.3-30.23,34.3h-51.44c-17.15,0-29.64-10.46-29.64-33.13v-23c0-4.15,3.36-7.52,7.52-7.52h18.39c4.15,0,7.52,3.36,7.52,7.52v18.1c0,4.15,3.36,7.52,7.52,7.52h29.44c4.15,0,7.52-3.36,7.52-7.52v-25c0-2.87-1.63-5.48-4.2-6.75l-57.99-28.45c-11.63-6.39-15.69-12.79-15.69-27.61v-34c0-20.93,10.17-29.06,29.06-29.06h52.31c22.67,0,29.94,10.75,29.94,34.3v18.64c0,4.15-3.36,7.52-7.52,7.52h-18.39c-4.15,0-7.52-3.36-7.52-7.52v-14.61c0-4.15-3.36-7.52-7.52-7.52h-29.44c-4.15,0-7.52,3.36-7.52,7.52v19.75c0,2.88,1.64,5.5,4.23,6.76l58.55,28.46c11.63,6.1,15.11,12.5,15.11,27.9v33.42Z"/><text fill="#fff" font-family="DM Sans,sans-serif" font-weight="600" font-size="58.97" transform="translate(593.35 274.65)">studio</text></g></svg>
+  <p>Salvador Olivares · ISC UAA · <a href="https://github.com/salva052" style="color:var(--teal)">github.com/salva052</a></p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     PRINTABLE CV — hidden on screen, visible on print
+     ═══════════════════════════════════════════════════ -->
+<div class="print-cv">
+
+  <!-- HEADER -->
+  <div class="pcv-header">
+    <div>
+      <div class="pcv-name">Salvador Olivares</div>
+      <div class="pcv-role">Computer Systems Engineering Student &amp; Founder, Sinergia Studio</div>
+    </div>
+    <div class="pcv-contact">
+      Aguascalientes, Ags., México<br>
+      ✆ (+52) 449 396 33 56<br>
+      ✉ salvador.olivares@sinergiastudiomkt.com<br>
+      🌐 salva052.github.io<br>
+      GitHub: github.com/salva052
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL PROFILE -->
+  <div class="pcv-section">
+    <div class="pcv-sec-title">Professional Profile</div>
+    <p class="pcv-text">Computer Systems Engineering student (7th semester) at Universidad Autónoma de Aguascalientes with practical experience in full-stack software development, project management, and digital marketing. Founder and director of Sinergia Studio, a multidisciplinary studio serving real clients across Mexico through software systems, performance marketing campaigns, and content strategy. Six years of experience creating digital content, with a deep understanding of audience engagement that informs both technical and marketing work. Interested in software engineering, systems design, business automation, and applied digital marketing.</p>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="pcv-section">
+    <div class="pcv-sec-title">Education</div>
+    <div class="pcv-grid">
+      <div class="pcv-date">Aug. 2023 –<br>Present</div>
+      <div class="pcv-entry">
+        <div class="pcv-entry-title">B.Eng. in Computer Systems Engineering</div>
+        <div class="pcv-entry-sub">Universidad Autónoma de Aguascalientes, Aguascalientes, México</div>
+        <div class="pcv-entry-meta">7th semester · Expected completion: 2027</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="pcv-section">
+    <div class="pcv-sec-title">Experience</div>
+    <div class="pcv-grid">
+      <div class="pcv-date">Aug. 2025 –<br>Present</div>
+      <div class="pcv-entry">
+        <div class="pcv-entry-title">Founder &amp; Project Lead</div>
+        <div class="pcv-entry-sub">Sinergia Studio, Aguascalientes, México</div>
+        <ul>
+          <li>Founded and lead a multidisciplinary studio offering software development, performance marketing, content strategy, and process automation to businesses across Mexico.</li>
+          <li>Coordinate a team of 8+ developers, editors, strategists, and production staff across simultaneous client accounts.</li>
+          <li>Design, launch, and optimize Meta Ads and Google Ads campaigns with measurable results: 430 WhatsApp conversations at $2.78 each; 166 messages at $3.99 each for local clients.</li>
+          <li>Built internal software platforms (Sinergia OS, Sinergia Puntos) replacing manual spreadsheets with real-time, data-driven systems.</li>
+        </ul>
+      </div>
+      <div class="pcv-date">Dec. 2022 –<br>Jan. 2026</div>
+      <div class="pcv-entry">
+        <div class="pcv-entry-title">Team Member</div>
+        <div class="pcv-entry-sub">Thrifty Colosio, Aguascalientes, México</div>
+        <ul>
+          <li>Customer service in a high-traffic retail environment; developed communication and problem-solving skills under operational pressure.</li>
+          <li>First content creation client for Sinergia Studio; applied operational knowledge directly to marketing strategy.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="pcv-section">
+    <div class="pcv-sec-title">Selected Software Projects</div>
+
+    <div style="margin-bottom:8px">
+      <div class="pcv-proj-header">
+        <span class="pcv-entry-title">Sinergia OS — Business Management System</span>
+        <span class="pcv-stack">React · Node.js · Express · Prisma · PostgreSQL</span>
+      </div>
+      <div class="pcv-entry-meta"><a href="https://github.com/salva052/sinergia-os">github.com/salva052/sinergia-os</a></div>
+      <p class="pcv-text" style="margin:0">Full-stack internal platform for client management, revenue/expense tracking, payroll, cash flow monitoring, and profitability dashboards. Implements Excel data import and real-time financial reporting.</p>
+    </div>
+
+    <div style="margin-bottom:8px">
+      <div class="pcv-proj-header">
+        <span class="pcv-entry-title">Sinergia Puntos — Team Compensation Tracker</span>
+        <span class="pcv-stack">React · Vite · Node.js · Supabase · Railway</span>
+      </div>
+      <div class="pcv-entry-meta"><a href="https://github.com/salva052/sinergia-puntos">github.com/salva052/sinergia-puntos</a></div>
+      <p class="pcv-text" style="margin:0">Full-stack points-based compensation system deployed on Railway and Vercel. Assigns point values to work activities and calculates team payments automatically.</p>
+    </div>
+
+    <div style="margin-bottom:8px">
+      <div class="pcv-proj-header">
+        <span class="pcv-entry-title">Kioskos — Inventory &amp; Sales Management System</span>
+        <span class="pcv-stack">JavaScript · Node.js</span>
+      </div>
+      <div class="pcv-entry-meta"><a href="https://github.com/salva052/sistema-kioskos">github.com/salva052/sistema-kioskos</a></div>
+      <p class="pcv-text" style="margin:0">Management system for a local fruit distributor supporting product catalog, sales tracking, and operations reporting.</p>
+    </div>
+
+    <div style="margin-bottom:8px">
+      <div class="pcv-proj-header">
+        <span class="pcv-entry-title">Ecommerce API — Team Project</span>
+        <span class="pcv-stack">REST API · Node.js · Team collaboration</span>
+      </div>
+      <div class="pcv-entry-meta"><a href="https://github.com/Https-Contreras/Ecommerce-API-Equipo-Tech-Up">github.com/Https-Contreras/Ecommerce-API-Equipo-Tech-Up</a></div>
+      <p class="pcv-text" style="margin:0">Collaborative REST API for e-commerce. Contributed to endpoint design, routing, and business logic for cart and product catalog.</p>
+    </div>
+
+    <div>
+      <div class="pcv-proj-header">
+        <span class="pcv-entry-title">LearnNow — Low-Code Application (Mendix)</span>
+        <span class="pcv-stack">Mendix · Mendix Cloud</span>
+      </div>
+      <div class="pcv-entry-meta"><a href="https://github.com/salva052/learnow-mendix-salvador-olivares">github.com/salva052/learnow-mendix-salvador-olivares</a></div>
+      <p class="pcv-text" style="margin:0">Learning application built on the Mendix low-code platform. Applied process modeling, visual database design, and cloud deployment.</p>
+    </div>
+  </div>
+
+  <!-- COURSES -->
+  <div class="pcv-section">
+    <div class="pcv-sec-title">Courses &amp; Certifications</div>
+    <div class="pcv-grid">
+      <div class="pcv-date">2024–2025</div>
+      <div class="pcv-entry">
+        <div class="pcv-entry-title">Meta Ads — Campaign Strategy &amp; Performance Marketing</div>
+        <div class="pcv-entry-meta">Self-directed · Applied in live client campaigns at Sinergia Studio</div>
+      </div>
+      <div class="pcv-date">2025</div>
+      <div class="pcv-entry">
+        <div class="pcv-entry-title">Google Ads — Search &amp; Performance Max Campaigns</div>
+        <div class="pcv-entry-meta">Google Ads Platform · Configured and managed first agency acquisition campaign</div>
+      </div>
+      <div class="pcv-date">2024–2025</div>
+      <div class="pcv-entry">
+        <div class="pcv-entry-title">Full-Stack Web Development (Node.js, React, PostgreSQL)</div>
+        <div class="pcv-entry-meta">Self-directed · Applied in Sinergia OS, Sinergia Puntos, and client web projects</div>
+      </div>
+      <div class="pcv-date">2025</div>
+      <div class="pcv-entry">
+        <div class="pcv-entry-title">Mendix Low-Code Platform</div>
+        <div class="pcv-entry-meta">Mendix Academy · App modeling, logic design, and Mendix Cloud deployment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="pcv-section">
+    <div class="pcv-sec-title">Technical Skills</div>
+    <div class="pcv-2col">
+      <div>
+        <div class="pcv-skill-group">
+          <div class="pcv-skill-label">Programming &amp; Development</div>
+          <div class="pcv-skill-val">JavaScript, React, Node.js, Express, HTML5, CSS3, Vite</div>
+        </div>
+        <div class="pcv-skill-group">
+          <div class="pcv-skill-label">Databases &amp; Backend</div>
+          <div class="pcv-skill-val">PostgreSQL, Prisma ORM, Supabase, MySQL</div>
+        </div>
+        <div class="pcv-skill-group">
+          <div class="pcv-skill-label">Tools &amp; Deployment</div>
+          <div class="pcv-skill-val">Git, GitHub, Vercel, Railway, Mendix</div>
+        </div>
+      </div>
+      <div>
+        <div class="pcv-skill-group">
+          <div class="pcv-skill-label">Marketing &amp; Business</div>
+          <div class="pcv-skill-val">Meta Ads, Google Ads, Campaign Analysis, Content Strategy, Performance Marketing, Business Automation</div>
+        </div>
+        <div class="pcv-skill-group">
+          <div class="pcv-skill-label">Soft Skills</div>
+          <div class="pcv-skill-val">Leadership, Teamwork, Problem Solving, Client Communication, Analytical Thinking, Adaptability, Autonomous Learning</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="pcv-section">
+    <div class="pcv-sec-title">Languages</div>
+    <div class="pcv-lang-row"><span><strong>Spanish</strong></span><span>Native</span></div>
+    <div class="pcv-lang-row"><span><strong>English</strong></span><span>B2 — Upper-Intermediate working proficiency</span></div>
+  </div>
+
+</div><!-- end .print-cv -->
+
+<script>
+// ── NAV SCROLL ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── LANGUAGE SYSTEM ──
+let currentLang = 'en';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text) el.innerHTML = text;
+  });
+  document.documentElement.setAttribute('data-lang', lang);
+}
+
+// ── INTERSECTION OBSERVER (fade-up) ──
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+fadeEls.forEach(el => observer.observe(el));
+
+// ── HERO TYPING EFFECT ──
+const subtitles = {
+  en: [
+    'CS Engineering student at UAA & founder of <strong>Sinergia Studio</strong> — bridging software systems and performance marketing for real businesses.',
+    'Building software that works. Running campaigns that convert. Both at the same time.'
+  ],
+  es: [
+    'Estudiante de ISC en la UAA y fundador de <strong>Sinergia Studio</strong> — uniendo sistemas de software con marketing de rendimiento para negocios reales.',
+    'Construyendo software que funciona. Corriendo campañas que convierten. Ambas a la vez.'
+  ]
+};
+</script>
+</body>
+</html>
